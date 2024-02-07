@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    background-color: darkgray;
+    color: #222;
+    overflow-x: hidden;
+    margin: 0;
+}
+.container {
+    background-color: #fafafa;
+    transform-origin: top left;
+    transition: transform 0.5s linear; /* rotating the main article  */
+    width: 100vw;
+    min-height: 100vw;
+    padding: 50px;
+    box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.3);
+
+}
+.container img{
+    width: 50%;
+}
+
+
+
+/* building the circle */
+.circle-container{
+    position: fixed;
+    top: -100px;  /* hiding the half square  */
+    left: -100px;
+}
+.circle{
+    background-color: #ff7979;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;  /* converting square into circle */
+    position: relative;
+    box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.3);
+
+    transition: transform 0.5 linear;
+}
+.circle button{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;  /*placing button inside the circle*/
+    background: transparent;
+    border: 0;
+    /* font-size: 96px; */
+    /* color: #fff; */
+}
+/* maybe removing borders of button */
+/* .circle buttonfocus {
+    outline: none; 
+} */
+/* arranging buttons inside the circle */
+.circle button#open {
+    left: 60%;
+}
+
+.circle button#close {
+    top: 60%;
+    transform: rotate(90deg);
+    transform-origin: top left;
+}
+/* sizing both icons */
+.cross img{
+    width: 20px;
+    height: 20px;
+}
+.bars img{
+    width: 40px;
+    height: 40px;
+}
+
+
+/* giving the animation to the circle and article and nav bar*/
+.container.show-nav {
+    transform: rotate(-20deg);  /* rotating the main page*/
+}
+.container.show-nav .circle{
+    transform: rotate(-90deg); /* rotating the corner circle(square) so that cross can replace bar */
+}
+/* making the list elements to come to the place when class of container changes */
+.container.show-nav + nav li{
+    transform: translateX(0);
+    transition-delay: 0.4s;
+}
+
+
+/* position of nav */
+nav {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    z-index: 100;
+}
+/* for shifting list */
+nav ul {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+
+/* styling li elements */
+nav ul li {
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #fff;
+    margin: 40px 0;
+    transform: translateX(-200%);  /*for hiding all list elements*/
+    transition: transform 0.4s ease-in;
+}
+/* for the icons */
+nav ul li i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+/* margin for second element of list */
+nav ul li + li {
+    margin-left: 15px;
+}
+/* margin for thired elsement of list */
+nav ul li + li + li {
+    margin-left: 30px;
+}
+
+
+/* styling the main article page */
+.content {
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+.content h1 {
+    margin: 0;
+}
+
+.content small{
+    color: #555;
+    font-style: italic;
+}
+
+.content p {
+    color: #333;
+    line-height: 1.5;
+}
+
+
+nav ul li:hover{
+    color: black;
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    font-size: 17px;
+}
